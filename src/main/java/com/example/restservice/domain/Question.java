@@ -12,36 +12,36 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Question {
-	
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	private long id;
-	
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private long questionId;
+
 	private String qst;
-	
-	private boolean radio;
-	
-	@OneToOne(cascade=CascadeType.ALL)
+
+	private String type;
+
+	@OneToOne(cascade = CascadeType.ALL)
 	@JsonIgnore
-	@JoinColumn(name="answerid")
+	@JoinColumn(name = "answerid")
 	private Answer answer;
-	
+
 	public Question() {
-		
+
 	}
 
-	public Question(String qst, boolean radio) {
+	public Question(String qst, String type) {
 		super();
 		this.qst = qst;
-		this.radio = radio;
+		this.type = type;
 	}
 
-	public long getId() {
-		return id;
+	public long getquestionId() {
+		return questionId;
 	}
 
-	public void setId(long id) {
-		this.id = id;
+	public void setId(long questionId) {
+		this.questionId = questionId;
 	}
 
 	public String getQst() {
@@ -52,12 +52,12 @@ public class Question {
 		this.qst = qst;
 	}
 
-	public boolean isRadio() {
-		return radio;
+	public String isType() {
+		return type;
 	}
 
-	public void setRadio(boolean radio) {
-		this.radio = radio;
+	public void setType(String type) {
+		this.type = type;
 	}
 
 	public Answer getAnswer() {
@@ -70,15 +70,11 @@ public class Question {
 
 	@Override
 	public String toString() {
-		if(this.answer != null)
-			return "Question [id=" + id + ", qst=" + qst + ", radio=" + radio + ", answer=" + this.getAnswer() + "]";
+		if (this.answer != null)
+			return "Question [id=" + questionId + ", qst=" + qst + ", radio=" + type + ", answer=" + this.getAnswer()
+					+ "]";
 		else
-			return "Question [id=" + id + ", qst=" + qst + ", radio=" + radio + "]";
+			return "Question [id=" + questionId + ", qst=" + qst + ", radio=" + type + "]";
 	}
-	
-	
-	
-	
-
 
 }
