@@ -49,7 +49,7 @@ public class RestController {
 		return (List<Question>) qrepository.findAll();
 	}
 
-	@RequestMapping(value = "/questions/{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "/questions/{questionId}", method = RequestMethod.GET)
 	public @ResponseBody Optional<Question> findQuestionRest(@PathVariable("id") Long id) {
 		return qrepository.findById(id);
 	}
