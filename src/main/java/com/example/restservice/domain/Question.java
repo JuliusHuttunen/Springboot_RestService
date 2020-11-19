@@ -15,7 +15,7 @@ public class Question {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long questionId;
+	private long id;
 
 	private String qst;
 
@@ -36,12 +36,12 @@ public class Question {
 		this.type = type;
 	}
 
-	public long getquestionId() {
-		return questionId;
+	public long getId() {
+		return id;
 	}
 
-	public void setId(long questionId) {
-		this.questionId = questionId;
+	public void setId(long id) {
+		this.id = id;
 	}
 
 	public String getQst() {
@@ -71,10 +71,10 @@ public class Question {
 	@Override
 	public String toString() {
 		if (this.answer != null)
-			return "Question [id=" + questionId + ", qst=" + qst + ", radio=" + type + ", answer=" + this.getAnswer()
+			return "Question [id=" + id + ", qst=" + qst + ", radio=" + type + ", answer=" + this.getAnswer()
 					+ "]";
 		else
-			return "Question [id=" + questionId + ", qst=" + qst + ", radio=" + type + "]";
+			return "Question [id=" + id + ", qst=" + qst + ", radio=" + type + "]";
 	}
 
 }
