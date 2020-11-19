@@ -50,8 +50,8 @@ public class RestController {
 	}
 
 	@RequestMapping(value = "/questions/{questionId}", method = RequestMethod.GET)
-	public @ResponseBody Optional<Question> findQuestionRest(@PathVariable("id") Long id) {
-		return qrepository.findById(id);
+	public @ResponseBody Optional<Question> findQuestionRest(@PathVariable("questionId") Long questionId) {
+		return qrepository.findById(questionId);
 	}
 
 	@RequestMapping(value = "/answers", method = RequestMethod.GET)
@@ -64,9 +64,9 @@ public class RestController {
 		return arepository.findById(id);
 	}
 
-	@RequestMapping(value = "/form/{id}", method = RequestMethod.GET)
-	public String formAnswer(@PathVariable("id") Long id, Model model) {
-		model.addAttribute("question", qrepository.findById(id));
+	@RequestMapping(value = "/form/{questionId}", method = RequestMethod.GET)
+	public String formAnswer(@PathVariable("questionId") Long questionId, Model model) {
+		model.addAttribute("question", qrepository.findById(questionId));
 		model.addAttribute("answers", arepository.findAll());
 		return "form";
 	}
@@ -83,9 +83,9 @@ public class RestController {
 		return "add";
 	}
 	
-	@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
-	public String deleteQuestion(@PathVariable("id") Long id, Model model) {
-		qrepository.deleteById(id);
+	@RequestMapping(value = "/delete/{questionId}", method = RequestMethod.GET)
+	public String deleteQuestion(@PathVariable("questionId") Long questionId, Model model) {
+		qrepository.deleteById(questionId);
 		return "redirect:../question";
 	}
 }
