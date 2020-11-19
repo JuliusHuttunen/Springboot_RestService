@@ -77,7 +77,7 @@ public class RestController {
 		return "redirect:question";
 	}
 
-	@RequestMapping(value = "/add", method = RequestMethod.POST)
+	@RequestMapping(value = "/add", method = RequestMethod.GET)
 	public String addQuestion(Model model) {
 		model.addAttribute("question", new Question());
 		return "add";
