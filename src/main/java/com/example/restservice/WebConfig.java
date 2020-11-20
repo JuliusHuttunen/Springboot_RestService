@@ -22,9 +22,13 @@ public class WebConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests().antMatchers("css/**").permitAll()
 		.antMatchers("/api/**").permitAll()
-		.and().authorizeRequests().anyRequest()
-				.authenticated().and().formLogin().defaultSuccessUrl("/question").permitAll().and().logout()
-				.permitAll();
+		.and()
+		.authorizeRequests().anyRequest()
+		.authenticated().and().formLogin().defaultSuccessUrl("/question").permitAll().and().logout()
+		.permitAll();
+		http.cors()
+		.and();
+		
 	}
 
 	@Autowired
