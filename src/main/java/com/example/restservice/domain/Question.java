@@ -52,7 +52,7 @@ public class Question {
 		this.qst = qst;
 	}
 
-	public String isQsttype() {
+	public String getQsttype() {
 		return qsttype;
 	}
 
