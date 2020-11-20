@@ -21,7 +21,7 @@ public class Information {
 
 	@ManyToOne
 	@JsonIgnoreProperties("questions")
-	@JoinColumn(name = "questionId")
+	@JoinColumn(name = "id")
 	private Question question;
 
 	public Information() {

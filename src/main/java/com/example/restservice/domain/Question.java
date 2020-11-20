@@ -19,7 +19,7 @@ public class Question {
 
 	private String qst;
 
-	private String type;
+	private String qsttype;
 
 	@OneToOne(cascade = CascadeType.ALL)
 	@JsonIgnore
@@ -30,10 +30,10 @@ public class Question {
 
 	}
 
-	public Question(String qst, String type) {
+	public Question(String qst, String qsttype) {
 		super();
 		this.qst = qst;
-		this.type = type;
+		this.qsttype = qsttype;
 	}
 
 	public long getId() {
@@ -52,12 +52,12 @@ public class Question {
 		this.qst = qst;
 	}
 
-	public String isType() {
-		return type;
+	public String isQsttype() {
+		return qsttype;
 	}
 
-	public void setType(String type) {
-		this.type = type;
+	public void setQsttype(String qsttype) {
+		this.qsttype = qsttype;
 	}
 
 	public Answer getAnswer() {
@@ -71,10 +71,10 @@ public class Question {
 	@Override
 	public String toString() {
 		if (this.answer != null)
-			return "Question [id=" + id + ", qst=" + qst + ", radio=" + type + ", answer=" + this.getAnswer()
+			return "Question [id=" + id + ", qst=" + qst + ", radio=" + qsttype + ", answer=" + this.getAnswer()
 					+ "]";
 		else
-			return "Question [id=" + id + ", qst=" + qst + ", radio=" + type + "]";
+			return "Question [id=" + id + ", qst=" + qst + ", radio=" + qsttype + "]";
 	}
 
 }
