@@ -18,9 +18,11 @@
 		<tbody>
 			<tr>
 				<th>Question</th>
+				<th>Question type</th>
 			</tr>
 			<tr th:each = "question : ${questions}">
 				<td th:text="${question.qst}"></td>
+				<td th:text="${question.qsttype}"></td>
 				<td><a th:href="@{/form/{id}(id=${question.id})}"class="btn btn-success btn-sm" role="button">Answer</a></td>
 			</tr>
 		</tbody>
