@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 @Entity
 public class Answer {
@@ -18,11 +20,6 @@ public class Answer {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private long answerid;
 	private String content;
-	
-	@ManyToOne
-	private List<Question> questions;
-	
-	
 	
 	public Answer() {
 		
@@ -49,13 +46,6 @@ public class Answer {
 		this.content = content;
 	}
 
-	public List<Question> getQuestions() {
-		return questions;
-	}
-
-	public void setQuestions(List<Question> questions) {
-		this.questions = questions;
-	}
 
 	@Override
 	public String toString() {
