@@ -23,16 +23,18 @@ public class Question {
 
 	private String qsttype;
 
-	@OneToOne(cascade = CascadeType.ALL)
-	@JsonIgnore
-	@JoinColumn(name = "answerid")
-	private Answer answer;
+//	@OneToOne(cascade = CascadeType.ALL)
+//	@JsonIgnore
+//	@JoinColumn(name = "answerid")
+//	private Answer answer;
+	
+	private String answer;
 
 	public Question() {
 
 	}
 
-	public Question(String qst, String qsttype, Answer answer) {
+	public Question(String qst, String qsttype, String answer) {
 		super();
 		this.qst = qst;
 		this.qsttype = qsttype;
@@ -63,11 +65,11 @@ public class Question {
 		this.qsttype = qsttype;
 	}
 
-	public Answer getAnswer() {
+	public String getAnswer() {
 		return answer;
 	}
 
-	public void setAnswer(Answer answer) {
+	public void setAnswer(String answer) {
 		this.answer = answer;
 	}
 
