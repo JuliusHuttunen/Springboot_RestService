@@ -23,11 +23,15 @@ public class RestserviceApplication {
 	@Bean
 	public CommandLineRunner demo(QuestionRepository qrepository, AnswerRepository arepository, UserRepo userrepo) {
 		return (args) -> {
-			qrepository.save(new Question("How old are you?", "number"));
-			qrepository.save(new Question("How would you rate the course on a scale from 1 to 5?", "radio"));
-
+			
 			arepository.save(new Answer("I am 23 years old"));
 			arepository.save(new Answer("5"));
+			arepository.save(new Answer(""));
+			
+			qrepository.save(new Question("How old are you?", "number", arepository.findByContent("").get(0)));
+			qrepository.save(new Question("How would you rate the course on a scale from 1 to 5?", "radio", arepository.findByContent("").get(0)));
+
+			
 
 			User user1 = new User("user", "$2y$12$6LmFjyVVsZqwE6H.r3NFWeqlZ/wh/fN/jLnpUQrkzuhg1LF1raLPe", "USER");
 			User user2 = new User("admin", "$2y$10$5ZVBx3XDH6i6FdSltNYIIeJCcw/nH33wKNi7BEvm.8sKIMP7lITWe", "ADMIN");

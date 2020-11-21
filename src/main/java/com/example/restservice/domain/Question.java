@@ -6,6 +6,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -21,7 +23,7 @@ public class Question {
 
 	private String qsttype;
 
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "answer")
 	@JsonIgnore
 	@JoinColumn(name = "answerid")
 	private Answer answer;
@@ -30,10 +32,11 @@ public class Question {
 
 	}
 
-	public Question(String qst, String qsttype) {
+	public Question(String qst, String qsttype, Answer answer) {
 		super();
 		this.qst = qst;
 		this.qsttype = qsttype;
+		this.answer = answer;
 	}
 
 	public long getId() {
