@@ -23,7 +23,7 @@ public class Question {
 
 	private String qsttype;
 
-	@OneToOne(cascade = CascadeType.ALL, mappedBy = "answer")
+	@OneToOne(cascade = CascadeType.ALL)
 	@JsonIgnore
 	@JoinColumn(name = "answerid")
 	private Answer answer;
