@@ -14,7 +14,7 @@ import FormLabel from '@material-ui/core/FormLabel';
 
 export default function Answerto(props) {
     const [open, setOpen] = React.useState(false);
-    const [value, setValue] = React.useState('null');
+    const [value, setValue] = React.useState(null);
     const [question, setQuestion] = React.useState({
         qst: '', qsttype: '', answer: ''
     })
