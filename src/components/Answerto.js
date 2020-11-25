@@ -14,22 +14,26 @@ import FormLabel from '@material-ui/core/FormLabel';
 
 export default function Answerto(props) {
     const [open, setOpen] = React.useState(false);
-    const [value, setValue] = React.useState('3');
+    const [value, setValue] = React.useState('null');
     const [question, setQuestion] = React.useState({
-        qst:'', qsttype:'', answer: ''
+        qst: '', qsttype: '', answer: ''
     })
 
     const handleChange = (event) => {
         console.log(value);
         setValue(event.target.value);
-        setQuestion({qst: props.question.qst, qsttype: props.question.qsttype, 
-            answer: value})
-      };
+        setQuestion({
+            qst: props.question.qst, qsttype: props.question.qsttype,
+            answer: value
+        })
+    };
 
     const handleClickOpen = () => {
         console.log(props.question);
-        setQuestion({qst: props.question.qst, qsttype: props.question.qsttype, 
-            answer: props.question.answer})
+        setQuestion({
+            qst: props.question.qst, qsttype: props.question.qsttype,
+            answer: props.question.answer
+        })
         setOpen(true);
     };
 
@@ -38,7 +42,7 @@ export default function Answerto(props) {
     };
 
     const handleInputChange = (e) => {
-        setQuestion({...question, [e.target.name]: e.target.value})
+        setQuestion({ ...question, [e.target.name]: e.target.value })
     }
 
     const updateQuestion = () => {
@@ -47,25 +51,25 @@ export default function Answerto(props) {
     }
 
 
-    if(props.question.qsttype === "number") {
+    if (props.question.qsttype === "number") {
 
-    return(
-        <div>
-            <Button color="primary" onClick={handleClickOpen}>
-                Answer
+        return (
+            <div>
+                <Button color="primary" onClick={handleClickOpen}>
+                    Answer
             </Button>
-            <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
-                <DialogTitle id="form-dialog-title">{props.question.qst}</DialogTitle>
+                <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
+                    <DialogTitle id="form-dialog-title">{props.question.qst}</DialogTitle>
                     <DialogContent>
-                            <TextField
-                                margin="dense"
-                                type="number"
-                                name="answer"
-                                value={question.answer}
-                                onChange={e => handleInputChange(e)}
-                                label="Your answer"
-                                fullWidth
-                            />
+                        <TextField
+                            margin="dense"
+                            type="number"
+                            name="answer"
+                            value={question.answer}
+                            onChange={e => handleInputChange(e)}
+                            label="Your answer"
+                            fullWidth
+                        />
                     </DialogContent>
                     <DialogActions>
                         <Button onClick={handleClose} color="primary">
@@ -76,28 +80,28 @@ export default function Answerto(props) {
                         </Button>
                     </DialogActions>
                 </Dialog>
-        </div>
-    );
-}
+            </div>
+        );
+    }
 
-    else if(props.question.qsttype === "radio") {
-    return(
-        <div>
-            <Button color="primary" onClick={handleClickOpen}>
-                Answer
+    else if (props.question.qsttype === "radio") {
+        return (
+            <div>
+                <Button color="primary" onClick={handleClickOpen}>
+                    Answer
             </Button>
-            <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
-                <DialogTitle id="form-dialog-title">{props.question.qst}</DialogTitle>
+                <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
+                    <DialogTitle id="form-dialog-title">{props.question.qst}</DialogTitle>
                     <DialogContent>
                         <FormControl component="fieldset">
-                        <FormLabel component="legend">Your answer</FormLabel>
-                        <RadioGroup row aria-label="gender" name="gender1" value={value} onChange={event => handleChange(event)}>
-                            <FormControlLabel value='1' control={<Radio />} label="1" />
-                            <FormControlLabel value='2' control={<Radio />} label="2" />
-                            <FormControlLabel value='3' control={<Radio />} label="3" />
-                            <FormControlLabel value='4' control={<Radio />} label="4" />
-                            <FormControlLabel value='5' control={<Radio />} label="5" />
-                        </RadioGroup>
+                            <FormLabel component="legend">Your answer</FormLabel>
+                            <RadioGroup row aria-label="gender" name="gender1" value={value} onChange={event => handleChange(event)}>
+                                <FormControlLabel value='1' control={<Radio />} label="1" />
+                                <FormControlLabel value='2' control={<Radio />} label="2" />
+                                <FormControlLabel value='3' control={<Radio />} label="3" />
+                                <FormControlLabel value='4' control={<Radio />} label="4" />
+                                <FormControlLabel value='5' control={<Radio />} label="5" />
+                            </RadioGroup>
                         </FormControl>
                     </DialogContent>
                     <DialogActions>
@@ -109,27 +113,27 @@ export default function Answerto(props) {
                         </Button>
                     </DialogActions>
                 </Dialog>
-        </div>
-    );
-}
-    else{
-    
-    return(
-        <div>
-            <Button color="primary" onClick={handleClickOpen}>
-                Answer
+            </div>
+        );
+    }
+    else {
+
+        return (
+            <div>
+                <Button color="primary" onClick={handleClickOpen}>
+                    Answer
             </Button>
-            <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
-                <DialogTitle id="form-dialog-title">Vastaus</DialogTitle>
+                <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
+                    <DialogTitle id="form-dialog-title">Vastaus</DialogTitle>
                     <DialogContent>
-                            <TextField
-                                margin="dense"
-                                name="answer"
-                                value={question.answer}
-                                onChange={e => handleInputChange(e)}
-                                label="Your answer"
-                                fullWidth
-                            />
+                        <TextField
+                            margin="dense"
+                            name="answer"
+                            value={question.answer}
+                            onChange={e => handleInputChange(e)}
+                            label="Your answer"
+                            fullWidth
+                        />
                     </DialogContent>
                     <DialogActions>
                         <Button onClick={handleClose} color="primary">
@@ -140,7 +144,7 @@ export default function Answerto(props) {
                         </Button>
                     </DialogActions>
                 </Dialog>
-        </div>
-    )
-}
+            </div>
+        )
+    }
 }
