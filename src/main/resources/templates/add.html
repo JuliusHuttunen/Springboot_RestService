@@ -11,9 +11,16 @@
 		  	<label for="qst">Content of the question<label>
 			<input type="text" id="qst" th:field="*{qst}" />
 			<div style="clear: both; display: block; height: 10px;"></div>
-		  	<label for="qsttype">Type of the question</label>
-			<input type="qsttype" id="qsttype" th:field="*{qsttype}" />
+		  	<!-- <label for="qsttype">Type of the question</label>
+			<input type="qsttype" id="qsttype" th:field="*{qsttype}" /> -->
 			<div style="clear: both; display: block; height: 10px;"></div>
+			
+			<label for="typelist">Type of the question</label>
+			 <select id="typelist" th:value="*{qsttype}" class="form-control">
+       			<option th:value="${number}" th:text="Number"></option>
+       			<option th:value="${text}" th:text="Text"></option>
+       			<option th:value="${radio}" th:text="Radio"></option>
+    		</select>
     		
 			<div style="clear: both; display: block; height: 10px;"></div>
 			<input type="submit" value="Save"></input>
