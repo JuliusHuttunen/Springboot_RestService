@@ -1,16 +1,13 @@
 package com.example.restservice.domain;
 
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Question {
@@ -23,22 +20,17 @@ public class Question {
 
 	private String qsttype;
 	
-//	@OneToOne(cascade = CascadeType.ALL)
-//	@JsonIgnore
-//	@JoinColumn(name = "answerid")
-//	private Answer answer;
-	
-	private String answer;
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "question")
+	private List <Answer> answers;
 
 	public Question() {
 
 	}
 
-	public Question(String qst, String qsttype, String answer) {
+	public Question(String qst, String qsttype, Answer answer) {
 		super();
 		this.qst = qst;
 		this.qsttype = qsttype;
-		this.answer = answer;
 	}
 
 	public long getId() {
@@ -65,21 +57,19 @@ public class Question {
 		this.qsttype = qsttype;
 	}
 
-	public String getAnswer() {
-		return answer;
+	public List<Answer> getAnswers() {
+		return answers;
 	}
 
-	public void setAnswer(String answer) {
-		this.answer = answer;
+	public void setAnswers(List<Answer> answers) {
+		this.answers = answers;
 	}
 
 	@Override
 	public String toString() {
-		if (this.answer != null)
-			return "Question [id=" + id + ", qst=" + qst + ", radio=" + qsttype + ", answer=" + this.getAnswer()
-					+ "]";
-		else
-			return "Question [id=" + id + ", qst=" + qst + ", radio=" + qsttype + "]";
+		return "Question [id=" + id + ", qst=" + qst + ", qsttype=" + qsttype + "]";
 	}
+
+	
 
 }

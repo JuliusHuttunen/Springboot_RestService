@@ -1,29 +1,26 @@
 package com.example.restservice.domain;
 
-import java.util.List;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-
 @Entity
 public class Answer {
-	
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long answerid;
 	private String content;
-	
-	public Answer() {
-		
-	}
+
+	@ManyToOne
+	@JsonIgnore
+	@JoinColumn(name = "id")
+	private Question question;
 
 	public Answer(String content) {
 		super();
@@ -46,16 +43,20 @@ public class Answer {
 		this.content = content;
 	}
 
+	public Question getQuestion() {
+		return question;
+	}
+
+	public void setQuestion(Question question) {
+		this.question = question;
+	}
 
 	@Override
 	public String toString() {
-		return "Answer [answerid=" + answerid + ", content=" + content + "]";
+		if (this.question != null)
+			return "Answer [id=" + answerid + ", content=" + content + ", question=" + this.getQuestion() + "]";
+		else
+			return "Answer [id=" + answerid + ", content=" + content + "]";
 	}
-	
-	
-	
-	
-	
-	
 
 }
