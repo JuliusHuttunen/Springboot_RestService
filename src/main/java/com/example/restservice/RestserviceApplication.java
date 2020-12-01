@@ -27,9 +27,6 @@ public class RestserviceApplication {
 			arepository.save(new Answer("I am 23 years old"));
 			arepository.save(new Answer("5"));
 			arepository.save(new Answer(""));
-			
-			qrepository.save(new Question("How old are you?", "number",""));
-			qrepository.save(new Question("How would you rate the course on a scale from 1 to 5?", "radio", ""));
 
 			
 
