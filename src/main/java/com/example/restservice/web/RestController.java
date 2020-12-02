@@ -97,6 +97,7 @@ public class RestController {
 	@RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
 	public String editQuestion(@PathVariable("id") Long id, Model model) {
 		model.addAttribute("question", qrepository.findById(id));
+		model.addAttribute("answers", arepository.findAll());
 		return "edit";
 	}
 }
