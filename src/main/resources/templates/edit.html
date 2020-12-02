@@ -10,7 +10,6 @@
 	<div>
 		<form th:object="${question}" th:action="@{../save}" action="#" method="post">
 			<input type="hidden" id="id" th:field="*{id}" />
-			<input type="hidden" id="answer" th:field="*{answer}" />
 		  	<label for="qst">Content of the question<label>
 			<input type="text" id="qst" th:field="*{qst}" />
 			<div style="clear: both; display: block; height: 10px;"></div>
