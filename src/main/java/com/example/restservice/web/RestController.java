@@ -93,4 +93,10 @@ public class RestController {
 		qrepository.deleteById(id);
 		return "redirect:../question";
 	}
+	
+	@RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
+	public String editQuestion(@PathVariable("id") Long id, Model model) {
+		model.addAttribute("question", qrepository.findById(id));
+		return "edit";
+	}
 }

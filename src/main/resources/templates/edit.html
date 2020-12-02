@@ -1,14 +1,16 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>New question</title>
+    <title>Edit question</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" />
 </head>
 <body>
-	<h1>Add Question</h1>
+	<h1>Edit Question</h1>
 	<div>
-		<form th:object="${question}" th:action="@{save}" action="#" method="post">
+		<form th:object="${question}" th:action="@{../save}" action="#" method="post">
+			<input type="hidden" id="id" th:field="*{id}" />
+			<input type="hidden" id="answer" th:field="*{answer}" />
 		  	<label for="qst">Content of the question<label>
 			<input type="text" id="qst" th:field="*{qst}" />
 			<div style="clear: both; display: block; height: 10px;"></div>
