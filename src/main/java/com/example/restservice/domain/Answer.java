@@ -43,6 +43,7 @@ public class Answer {
 		this.content = content;
 	}
 
+
 	public Question getQuestion() {
 		return question;
 	}

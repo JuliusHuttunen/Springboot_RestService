@@ -44,25 +44,25 @@ public class RestController {
 //	arepository.save(answer);
 //	return answer;     
 //	}
-	
+
 	@CrossOrigin
 	@RequestMapping(value = "/questions", method = RequestMethod.GET)
 	public @ResponseBody List<Question> questionListRest() {
 		return (List<Question>) qrepository.findAll();
 	}
-	
+
 	@CrossOrigin
 	@RequestMapping(value = "/questions/{id}", method = RequestMethod.GET)
 	public @ResponseBody Optional<Question> findQuestionRest(@PathVariable("id") Long id) {
 		return qrepository.findById(id);
 	}
-	
+
 	@CrossOrigin
 	@RequestMapping(value = "/answers", method = RequestMethod.GET)
 	public @ResponseBody List<Answer> answerListRest() {
 		return (List<Answer>) arepository.findAll();
 	}
-	
+
 	@CrossOrigin
 	@RequestMapping(value = "/answers/{id}", method = RequestMethod.GET)
 	public @ResponseBody Optional<Answer> findAnswerRest(@PathVariable("answerid") Long id) {
@@ -81,23 +81,24 @@ public class RestController {
 		qrepository.save(question);
 		return "redirect:question";
 	}
+	
 
 	@RequestMapping(value = "/add", method = RequestMethod.GET)
 	public String addQuestion(Model model) {
 		model.addAttribute("question", new Question());
 		return "add";
 	}
-	
+
 	@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
 	public String deleteQuestion(@PathVariable("id") Long id, Model model) {
 		qrepository.deleteById(id);
 		return "redirect:../question";
 	}
-	
+
 	@RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
 	public String editQuestion(@PathVariable("id") Long id, Model model) {
 		model.addAttribute("question", qrepository.findById(id));
-		model.addAttribute("answers", arepository.findAll());
+//		model.addAttribute("answers", arepository.findAll());
 		return "edit";
 	}
 }

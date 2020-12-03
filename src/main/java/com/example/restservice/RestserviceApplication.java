@@ -9,8 +9,8 @@ import com.example.restservice.domain.Answer;
 import com.example.restservice.domain.AnswerRepository;
 import com.example.restservice.domain.Question;
 import com.example.restservice.domain.QuestionRepository;
-import com.example.restservice.domain.User;
 import com.example.restservice.domain.UserRepo;
+
 
 @SpringBootApplication
 public class RestserviceApplication {
@@ -23,7 +23,10 @@ public class RestserviceApplication {
 	@Bean
 	public CommandLineRunner demo(QuestionRepository qrepository, AnswerRepository arepository, UserRepo userrepo) {
 		return (args) -> {
-
+			Answer b1 = new Answer("Todella hyvin");
+			
+			Question a1 = new Question("Miten menee","Moikkelis?", b1);
+			qrepository.save(a1);
 		};
 
 	}

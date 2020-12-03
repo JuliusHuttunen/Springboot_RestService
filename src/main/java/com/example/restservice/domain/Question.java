@@ -31,6 +31,7 @@ public class Question {
 		super();
 		this.qst = qst;
 		this.qsttype = qsttype;
+	
 	}
 
 	public long getId() {
