@@ -6,14 +6,15 @@
     <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" />
 </head>
 <body>
+<div class = "form-group col-md-3">
 	<h1>Edit Question</h1>
 	<div>
 		<form th:object="${question}" th:action="@{../save}" action="#" method="post">
 			<input type="hidden" id="id" th:field="*{id}" />
-		  	<label for="qst">Content of the question</label>
+			
+			<p>Content of the question <span id="range3"></span></p>
 			<input type="text" id="qst" th:field="*{qst}" />
 			<div style="clear: both; display: block; height: 10px;"></div>
-
 			
 			<label for="typelist">Type of the question</label>
 			 <select id="typelist" th:field="*{qsttype}" class="form-control">
@@ -23,8 +24,10 @@
        			<option th:value="'multi'" th:text="Multi"></option>
     		</select>
     		
+    		
 			<div style="clear: both; display: block; height: 10px;"></div>
 			<input type="submit" value="Save"></input>
+			</div>
 		</form>
 	</div>
 </body>
