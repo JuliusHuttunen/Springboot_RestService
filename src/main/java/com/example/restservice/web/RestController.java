@@ -26,6 +26,7 @@ public class RestController {
 	@Autowired
 	private QuestionRepository qrepository;
 
+	@CrossOrigin(origins = "https://questionnaire-rest.herokuapp.com/api")
 	@RequestMapping(value = { "/", "/question" })
 	public String main(Model model) {
 		model.addAttribute("questions", qrepository.findAll());
@@ -45,25 +46,25 @@ public class RestController {
 //	return answer;     
 //	}
 
-	@CrossOrigin
+	@CrossOrigin(origins = "https://questionnaire-rest.herokuapp.com/api")
 	@RequestMapping(value = "/questions", method = RequestMethod.GET)
 	public @ResponseBody List<Question> questionListRest() {
 		return (List<Question>) qrepository.findAll();
 	}
 
-	@CrossOrigin
+	@CrossOrigin(origins = "https://questionnaire-rest.herokuapp.com/api")
 	@RequestMapping(value = "/questions/{id}", method = RequestMethod.GET)
 	public @ResponseBody Optional<Question> findQuestionRest(@PathVariable("id") Long id) {
 		return qrepository.findById(id);
 	}
 
-	@CrossOrigin
+	@CrossOrigin(origins = "https://questionnaire-rest.herokuapp.com/api")
 	@RequestMapping(value = "/answers", method = RequestMethod.GET)
 	public @ResponseBody List<Answer> answerListRest() {
 		return (List<Answer>) arepository.findAll();
 	}
 
-	@CrossOrigin
+	@CrossOrigin(origins = "https://questionnaire-rest.herokuapp.com/api")
 	@RequestMapping(value = "/answers/{id}", method = RequestMethod.GET)
 	public @ResponseBody Optional<Answer> findAnswerRest(@PathVariable("answerid") Long id) {
 		return arepository.findById(id);
