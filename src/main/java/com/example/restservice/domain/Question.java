@@ -20,17 +20,17 @@ public class Question {
 
 	private String qsttype;
 	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "question")
-	private List <Answer> answers;
+	private String answer;
 
 	public Question() {
 
 	}
 
-	public Question(String qst, String qsttype, Answer answer) {
+	public Question(String qst, String qsttype, String answer) {
 		super();
 		this.qst = qst;
 		this.qsttype = qsttype;
+		this.answer = answer;
 	
 	}
 
@@ -58,17 +58,17 @@ public class Question {
 		this.qsttype = qsttype;
 	}
 
-	public List<Answer> getAnswers() {
-		return answers;
+	public String getAnswer() {
+		return answer;
 	}
 
-	public void setAnswers(List<Answer> answers) {
-		this.answers = answers;
+	public void setAnswer(String answer) {
+		this.answer = answer;
 	}
 
 	@Override
 	public String toString() {
-		return "Question [id=" + id + ", qst=" + qst + ", qsttype=" + qsttype + "]";
+		return "Question [id=" + id + ", qst=" + qst + ", qsttype=" + qsttype + ", answer=" + answer + "]";
 	}
 
 	
