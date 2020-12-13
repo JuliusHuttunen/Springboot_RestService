@@ -1,63 +1,76 @@
 package com.example.restservice.domain;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Answer {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long answerid;
-	private String content;
+	private long id;
 
-	@ManyToOne
-	@JsonIgnore
-	@JoinColumn(name = "id")
-	private Question question;
+	private String qst;
 
-	public Answer(String content) {
+	private String qsttype;
+	
+	private String answer;
+
+	public Answer() {
+
+	}
+
+	public Answer(String qst, String qsttype, String answer) {
 		super();
-		this.content = content;
+		this.qst = qst;
+		this.qsttype = qsttype;
+		this.answer = answer;
+	
 	}
 
-	public long getAnswerid() {
-		return answerid;
+	public long getId() {
+		return id;
 	}
 
-	public void setAnswerid(long answerid) {
-		this.answerid = answerid;
+	public void setId(long id) {
+		this.id = id;
 	}
 
-	public String getContent() {
-		return content;
+	public String getQst() {
+		return qst;
 	}
 
-	public void setContent(String content) {
-		this.content = content;
+	public void setQst(String qst) {
+		this.qst = qst;
 	}
 
-
-	public Question getQuestion() {
-		return question;
+	public String getQsttype() {
+		return qsttype;
 	}
 
-	public void setQuestion(Question question) {
-		this.question = question;
+	public void setQsttype(String qsttype) {
+		this.qsttype = qsttype;
+	}
+
+	public String getAnswer() {
+		return answer;
+	}
+
+	public void setAnswer(String answer) {
+		this.answer = answer;
 	}
 
 	@Override
 	public String toString() {
-		if (this.question != null)
-			return "Answer [id=" + answerid + ", content=" + content + ", question=" + this.getQuestion() + "]";
-		else
-			return "Answer [id=" + answerid + ", content=" + content + "]";
+		return "Answer [id=" + id + ", qst=" + qst + ", qsttype=" + qsttype + ", answer=" + answer + "]";
 	}
+
+	
 
 }
