@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -29,7 +30,7 @@ public class RestController {
 	@CrossOrigin(origins = "*")
 	@RequestMapping(value = { "/", "/question" })
 	public String main(Model model) {
-		model.addAttribute("questions", qrepository.findAll());
+		model.addAttribute("questions", qrepository.findAll(Sort.by("id")));
 		return "question";
 	}
 
@@ -49,7 +50,7 @@ public class RestController {
 	@CrossOrigin(origins = "*")
 	@RequestMapping(value = "/questions", method = RequestMethod.GET)
 	public @ResponseBody List<Question> questionListRest() {
-		return (List<Question>) qrepository.findAll();
+		return (List<Question>) qrepository.findAll(Sort.by("id"));
 	}
 
 	@CrossOrigin(origins = "*")
