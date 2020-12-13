@@ -5,7 +5,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
-import com.example.restservice.domain.Answer;
+import com.example.restservice.domain.Answerq;
 import com.example.restservice.domain.AnswerRepository;
 import com.example.restservice.domain.Question;
 import com.example.restservice.domain.QuestionRepository;
@@ -23,7 +23,7 @@ public class RestserviceApplication {
 	@Bean
 	public CommandLineRunner demo(QuestionRepository qrepository, AnswerRepository arepository, UserRepo userrepo) {
 		return (args) -> {
-			arepository.save(new Answer("What the fuck", "text", ""));
+			arepository.save(new Answerq("What the fuck", "text", ""));
 		};
 
 	}

@@ -10,7 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 @Entity
-public class Answer {
+public class Answerq {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -22,11 +22,11 @@ public class Answer {
 	
 	private String answer;
 
-	public Answer() {
+	public Answerq() {
 
 	}
 
-	public Answer(String qst, String qsttype, String answer) {
+	public Answerq(String qst, String qsttype, String answer) {
 		super();
 		this.qst = qst;
 		this.qsttype = qsttype;
