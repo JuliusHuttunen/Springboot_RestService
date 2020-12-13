@@ -26,7 +26,7 @@ public class RestController {
 	@Autowired
 	private QuestionRepository qrepository;
 
-	@CrossOrigin(origins = "http://localhost:3000")
+	@CrossOrigin(origins = "*")
 	@RequestMapping(value = { "/", "/question" })
 	public String main(Model model) {
 		model.addAttribute("questions", qrepository.findAll());
@@ -46,56 +46,60 @@ public class RestController {
 //	return answer;     
 //	}
 
-	@CrossOrigin(origins = "http://localhost:3000")
+	@CrossOrigin(origins = "*")
 	@RequestMapping(value = "/questions", method = RequestMethod.GET)
 	public @ResponseBody List<Question> questionListRest() {
 		return (List<Question>) qrepository.findAll();
 	}
 
-	@CrossOrigin(origins = "http://localhost:3000")
+	@CrossOrigin(origins = "*")
 	@RequestMapping(value = "/questions/{id}", method = RequestMethod.GET)
 	public @ResponseBody Optional<Question> findQuestionRest(@PathVariable("id") Long id) {
 		return qrepository.findById(id);
 	}
 
-	@CrossOrigin(origins = "http://localhost:3000")
+	@CrossOrigin(origins = "*")
 	@RequestMapping(value = "/answers", method = RequestMethod.GET)
 	public @ResponseBody List<Answer> answerListRest() {
 		return (List<Answer>) arepository.findAll();
 	}
 
-	@CrossOrigin(origins = "http://localhost:3000")
+	@CrossOrigin(origins = "*")
 	@RequestMapping(value = "/answers/{id}", method = RequestMethod.GET)
 	public @ResponseBody Optional<Answer> findAnswerRest(@PathVariable("answerid") Long id) {
 		return arepository.findById(id);
 	}
-
+	
+	@CrossOrigin(origins = "*")
 	@RequestMapping(value = "/form/{id}", method = RequestMethod.GET)
 	public String formAnswer(@PathVariable("id") Long id, Model model) {
 		model.addAttribute("question", qrepository.findById(id));
 		model.addAttribute("answers", arepository.findAll());
 		return "form";
 	}
-
+	
+	@CrossOrigin(origins = "*")
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
 	public String saveAnswer(Question question) {
 		qrepository.save(question);
 		return "redirect:question";
 	}
 	
-
+	@CrossOrigin(origins = "*")
 	@RequestMapping(value = "/add", method = RequestMethod.GET)
 	public String addQuestion(Model model) {
 		model.addAttribute("question", new Question());
 		return "add";
 	}
 
+	@CrossOrigin(origins = "*")
 	@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
 	public String deleteQuestion(@PathVariable("id") Long id, Model model) {
 		qrepository.deleteById(id);
 		return "redirect:../question";
 	}
 
+	@CrossOrigin(origins = "*")
 	@RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
 	public String editQuestion(@PathVariable("id") Long id, Model model) {
 		model.addAttribute("question", qrepository.findById(id));
