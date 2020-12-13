@@ -23,7 +23,6 @@ public class RestserviceApplication {
 	@Bean
 	public CommandLineRunner demo(QuestionRepository qrepository, AnswerRepository arepository, UserRepo userrepo) {
 		return (args) -> {
-			arepository.save(new Answerq("What the fuck", "text", ""));
 		};
 
 	}
