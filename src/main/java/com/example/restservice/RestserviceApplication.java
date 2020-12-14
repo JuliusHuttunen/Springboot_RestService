@@ -4,8 +4,6 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-
-import com.example.restservice.domain.AnswerRepository;
 import com.example.restservice.domain.QuestionRepository;
 import com.example.restservice.domain.UserRepo;
 
@@ -19,7 +17,7 @@ public class RestserviceApplication {
 	
 
 	@Bean
-	public CommandLineRunner demo(QuestionRepository qrepository, AnswerRepository arepository, UserRepo userrepo) {
+	public CommandLineRunner demo(QuestionRepository qrepository, UserRepo userrepo) {
 		return (args) -> {
 		};
 

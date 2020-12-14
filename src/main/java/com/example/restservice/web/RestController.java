@@ -23,7 +23,7 @@ public class RestController {
 
 	@Autowired
 	private AnswerRepository arepository;
-
+	
 	@Autowired
 	private QuestionRepository qrepository;
 
@@ -58,24 +58,27 @@ public class RestController {
 	public @ResponseBody Optional<Question> findQuestionRest(@PathVariable("id") Long id) {
 		return qrepository.findById(id);
 	}
-
+	
 	@CrossOrigin(origins = "*")
 	@RequestMapping(value = "/answers", method = RequestMethod.GET)
 	public @ResponseBody List<Answer> answerListRest() {
-		return (List<Answer>) arepository.findAll();
+		return (List<Answer>) arepository.findAll(Sort.by("id"));
 	}
 
 	@CrossOrigin(origins = "*")
-	@RequestMapping(value = "/answers/{id}", method = RequestMethod.GET)
-	public @ResponseBody Optional<Answer> findAnswerRest(@PathVariable("answerid") Long id) {
+	@RequestMapping(value = "/questions/{id}", method = RequestMethod.GET)
+	public @ResponseBody Optional<Answer> findAnswerRest(@PathVariable("id") Long id) {
 		return arepository.findById(id);
 	}
+
+	
+
+	
 	
 	@CrossOrigin(origins = "*")
 	@RequestMapping(value = "/form/{id}", method = RequestMethod.GET)
 	public String formAnswer(@PathVariable("id") Long id, Model model) {
 		model.addAttribute("question", qrepository.findById(id));
-		model.addAttribute("answers", arepository.findAll());
 		return "form";
 	}
 	
