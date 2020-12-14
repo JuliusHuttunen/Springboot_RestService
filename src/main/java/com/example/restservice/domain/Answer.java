@@ -12,7 +12,7 @@ public class Answer {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private long answerid;
 
 	private String qst;
 
@@ -33,11 +33,11 @@ public class Answer {
 	}
 
 	public long getId() {
-		return id;
+		return answerid;
 	}
 
 	public void setId(long id) {
-		this.id = id;
+		this.answerid = id;
 	}
 
 	public String getQst() {
@@ -66,7 +66,7 @@ public class Answer {
 
 	@Override
 	public String toString() {
-		return "Answer [id=" + id + ", qst=" + qst + ", qsttype=" + qsttype + ", answer=" + answer + "]";
+		return "Answer [id=" + answerid + ", qst=" + qst + ", qsttype=" + qsttype + ", answer=" + answer + "]";
 	}
 
 	

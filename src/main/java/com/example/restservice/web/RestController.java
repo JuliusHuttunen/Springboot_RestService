@@ -62,13 +62,13 @@ public class RestController {
 	@CrossOrigin(origins = "*")
 	@RequestMapping(value = "/answers", method = RequestMethod.GET)
 	public @ResponseBody List<Answer> answerListRest() {
-		return (List<Answer>) arepository.findAll(Sort.by("id"));
+		return (List<Answer>) arepository.findAll(Sort.by("answerid"));
 	}
 
 	@CrossOrigin(origins = "*")
-	@RequestMapping(value = "/questions/{id}", method = RequestMethod.GET)
-	public @ResponseBody Optional<Answer> findAnswerRest(@PathVariable("id") Long id) {
-		return arepository.findById(id);
+	@RequestMapping(value = "/answers/{id}", method = RequestMethod.GET)
+	public @ResponseBody Optional<Answer> findAnswerRest(@PathVariable("id") Long answerid) {
+		return arepository.findById(answerid);
 	}
 
 	
