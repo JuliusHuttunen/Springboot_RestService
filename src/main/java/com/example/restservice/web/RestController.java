@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.example.restservice.domain.Answerq;
+import com.example.restservice.domain.Answer;
 import com.example.restservice.domain.AnswerRepository;
 import com.example.restservice.domain.Question;
 import com.example.restservice.domain.QuestionRepository;
@@ -61,13 +61,13 @@ public class RestController {
 
 	@CrossOrigin(origins = "*")
 	@RequestMapping(value = "/answers", method = RequestMethod.GET)
-	public @ResponseBody List<Answerq> answerListRest() {
-		return (List<Answerq>) arepository.findAll();
+	public @ResponseBody List<Answer> answerListRest() {
+		return (List<Answer>) arepository.findAll();
 	}
 
 	@CrossOrigin(origins = "*")
 	@RequestMapping(value = "/answers/{id}", method = RequestMethod.GET)
-	public @ResponseBody Optional<Answerq> findAnswerRest(@PathVariable("id") Long id) {
+	public @ResponseBody Optional<Answer> findAnswerRest(@PathVariable("answerid") Long id) {
 		return arepository.findById(id);
 	}
 	
@@ -75,6 +75,7 @@ public class RestController {
 	@RequestMapping(value = "/form/{id}", method = RequestMethod.GET)
 	public String formAnswer(@PathVariable("id") Long id, Model model) {
 		model.addAttribute("question", qrepository.findById(id));
+		model.addAttribute("answers", arepository.findAll());
 		return "form";
 	}
 	

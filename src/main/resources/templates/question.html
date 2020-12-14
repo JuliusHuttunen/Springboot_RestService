@@ -17,17 +17,13 @@
 	<table class="table table-striped">
 		<tbody>
 			<tr>
-				<th>ID</th>
 				<th>Question</th>
 				<th>Question type</th>
-				<th>Answer</th>
 				<th colspan="2">Settings</th>
 			</tr>
 			<tr th:each = "question : ${questions}">
-				<td th:text="${question.id}"></td>
 				<td th:text="${question.qst}"></td>
 				<td th:text="${question.qsttype}"></td>
-				<td th:text="${question.answer}"></td>
 				<td><a th:href="@{/delete/{id}(id=${question.id})}"class="btn btn-danger btn-sm" role="button">Delete</a></td>
 				<td><a th:href="@{/edit/{id}(id=${question.id})}"class="btn btn-success btn-sm" role="button">Edit</a></td>				
 			</tr>
